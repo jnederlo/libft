@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 19:00:51 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/06 15:27:23 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/07 10:33:39 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/07 11:35:07 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+void    *ft_memset(void *b, int c, size_t len)
 {
-	int		i;
-	int		j;
-	int		k;
-
-	i = 0;
-	if (!little[i])
-		return ((char*)big);
-	while (big[i] != '\0')
-	{
-		j = 0;
-		if (big[i] == little[j])
-		{
-			k = i;
-			while (big[k] == little[j] && little[j] && big[k])	
-			{
-				k++;
-				j++;
-			}
-			if (little[j] == '\0')
-				return ((char*)&big[i]);
+		unsigned char *bu;
+	
+		bu = b;
+		while (len > 0)
+		{	
+			*bu = (unsigned char)c;
+			bu++;
+			len--;
 		}
-		i++;
-	}
-	return (0);
+		return (b);
 }
