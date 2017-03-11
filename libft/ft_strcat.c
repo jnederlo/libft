@@ -6,11 +6,11 @@
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:43:29 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/02/28 17:04:23 by jnederlo         ###   ########.fr       */
+/*   Updated: 2017/03/09 10:38:29 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	int i;
 	int k;

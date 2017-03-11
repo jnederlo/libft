@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/07 19:07:10 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/09 14:41:10 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/09 21:45:04 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/09 21:58:33 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	unsigned char *dest;
-	const unsigned char *source;
-
-	dest = (unsigned char*)dst;
-	source = (const unsigned char*)src;
-	while(n > 0)
+	if(!s1 || !s2)
+		return(0);
+	while(*s1 && *s2 && n > 0)
 	{
-		*dest++ = *source++;
+		if(*s1 != *s2)
+			return(0);
+		s1++;
+		s2++;
 		n--;
 	}
-	return(dst);
+	return(1);
 }

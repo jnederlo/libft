@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/07 19:07:10 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/09 14:41:10 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/10 15:22:15 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/10 16:30:43 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strnew(size_t size)
 {
-	unsigned char *dest;
-	const unsigned char *source;
+	char *str;
 
-	dest = (unsigned char*)dst;
-	source = (const unsigned char*)src;
-	while(n > 0)
-	{
-		*dest++ = *source++;
-		n--;
-	}
-	return(dst);
+	str = (char*)malloc(size * sizeof(char) + 1);
+	if(!str)
+		return(0);
+	ft_bzero(str, size + 1);
+	return(str);
 }

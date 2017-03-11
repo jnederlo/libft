@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/07 19:07:10 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/09 14:41:10 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/09 18:39:52 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/10 17:31:27 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_strclr(char *s)
 {
-	unsigned char *dest;
-	const unsigned char *source;
-
-	dest = (unsigned char*)dst;
-	source = (const unsigned char*)src;
-	while(n > 0)
+	if(!s)
+		return ;
+	while (*s)
 	{
-		*dest++ = *source++;
-		n--;
-	}
-	return(dst);
+		*s = '\0';
+		s++;
+	}	
+	return;
 }
