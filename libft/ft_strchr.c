@@ -6,7 +6,7 @@
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:10:01 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/04 19:27:07 by jnederlo         ###   ########.fr       */
+/*   Updated: 2017/03/15 16:43:29 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char*)(s + i));
 	return (NULL);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:09:36 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/01 21:25:05 by jnederlo         ###   ########.fr       */
+/*   Updated: 2017/03/15 16:56:04 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlen(const char *s)
 {
 	int length;
-	
+
 	length = 0;
 	while (s[length] != '\0')
 		length++;

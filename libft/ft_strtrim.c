@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/10 18:01:32 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/15 16:19:13 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/11 14:05:44 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/15 19:12:46 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f) (char))
+char	*ft_strtrim(char const *s)
 {
-	int		i;
-	int		size;
-	char	*s2;
+	char	*str;
+	size_t	i;
+	char	*ptr;
+	char	*str1;
 
 	if (!s)
 		return (0);
-	i = 0;
-	size = ft_strlen(s);
-	s2 = (char *)malloc(size * sizeof(char) + 1);
-	if (!s2)
-		return (0);
-	while (s[i])
+	while (*s == ' ' || *s == '\n' || *s == '\t')
+		s++;
+	ptr = (char *)s;
+	i = 1;
+	if (*s == '\0')
+		return ((char *)s);
+	while (i++ < (ft_strlen((char *)ptr)))
+		s++;
+	while (*s == ' ' || *s == '\n' || *s == '\t')
 	{
-		s2[i] = f((char)s[i]);
-		i++;
+		s--;
+		i--;
 	}
-	s2[i] = 0;
-	return ((char *)s2);
+	if (!(str = ft_strnew(i - 1)))
+		return (0);
+	str1 = str;
+	str = ft_strncpy(str, ptr, i - 1);
+	return (str1);
 }

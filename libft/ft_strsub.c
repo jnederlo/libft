@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 16:51:47 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/15 16:50:32 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/11 12:10:15 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/15 16:39:36 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
-	size_t			i;
+	char	*str;
+	char	*ptr;
 
-	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n && *str1 == *str2)
+	if (!s)
+		return (0);
+	str = (char *)malloc(len * sizeof(char) + 1);
+	if (!str)
+		return (0);
+	ptr = str;
+	while (*s && start > 0)
 	{
-		i++;
-		str1++;
-		str2++;
-		if (i == n)
-			return (0);
+		s++;
+		start--;
 	}
-	return (*str1 - *str2);
+	while (*s && len-- > 0)
+		*str++ = *s++;
+	*str = 0;
+	return (ptr);
 }

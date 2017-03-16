@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 21:45:04 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/15 16:49:27 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/13 15:21:05 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/15 16:29:53 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	if (!s1 || !s2)
+	t_list	*newlink;
+
+	newlink = (t_list *)malloc(sizeof(t_list));
+	if (!newlink)
 		return (0);
-	while (*s1 && *s2 && n > 0)
+	if (!content)
 	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-		n--;
+		newlink->content = 0;
+		newlink->content_size = 0;
 	}
-	return (1);
+	else
+	{
+		newlink->content = malloc(content_size);
+		if (!newlink->content)
+			return (0);
+		newlink->content = ft_memcpy(newlink->content, content, content_size);
+		newlink->content_size = content_size;
+	}
+	newlink->next = NULL;
+	return (newlink);
 }
