@@ -34,7 +34,7 @@ char	*ft_strtrim(char const *s)
 		s--;
 		i--;
 	}
-	if (!(str = ft_strnew(i - 1)))
+	if ((str = ft_strnew(i - 1)) == NULL)
 		return (0);
 	str1 = str;
 	str = ft_strncpy(str, ptr, i - 1);
