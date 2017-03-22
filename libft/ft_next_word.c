@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_next_word.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 15:52:40 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/06 16:32:45 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/18 20:27:56 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/18 20:27:59 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Move through a string and find the next word.
+** seperated by the delimiter 'c'.
+** Return a pointer to the location where the next word starts.
+*/
+
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_next_word(const char *s, char c)
 {
-	size_t	i;
+	char	*start;
 	int		j;
-	size_t	k;
 
-	i = 0;
-	if (!little[i])
-		return ((char*)big);
-	while (big[i] && i < len)
+	j = 0;
+	while (*s)
 	{
-		j = 0;
-		if (big[i] == little[j])
+		while (*s && *s == c)
+			s++;
+		if (*s != c && *s)
+			start = (char *)s;
+		while (*s != c && *s)
 		{
-			k = i;
-			while (big[k] == little[j] && big[k] && little[j] && k < len)
-			{
-				k++;
-				j++;
-			}
-			if (!little[j])
-				return ((char*)&big[i]);
+			s++;
+			j++;
 		}
-		i++;
+		return ((char *)s);
 	}
 	return (0);
 }

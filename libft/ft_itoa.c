@@ -10,33 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Counts the number of digits in the number passed as 'n'.
+** Sets nb = n (nb is unsigned int so it gets rid of '-').
+** Accounts for negative by setting nb = -n, then adds 1 to the length.
+** Creates space for my string with ft_strnew(length) to pointer p.
+** Sends pointer p to point at last element in created string.
+** If nb == 0 moves back one from the null and set *p = '0'.
+** while nb != 0, get remainder of last digit divided by 10, set *p to ascii.
+** Decrease pointer by one and remove last digit from number, until nb = 0.
+** if n < 0 add in the negative.
+** return pointer to start of created string.
+*/
+
 #include "libft.h"
 
-static int	count_digits(int n)
-{
-	int	i;
-
-	if (n == -2147483648)
-		i = 0;
-	else if (n == 0)
-		i = 1;
-	else
-		i = 0;
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char			*p;
 	unsigned int	nb;
 	size_t			length;
 
-	length = count_digits(n);
+	length = ft_count_digits(n);
 	nb = n;
 	if (n < 0)
 	{

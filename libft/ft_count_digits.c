@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_count_digits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 15:52:40 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/06 16:32:45 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/19 11:14:56 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/19 11:26:57 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Count the number of digits in a number by 'chopping off' last digit
+** and counting 'i' while 'n' does not equal 0.
+** Accounts for the largest negative int and handles if n = zero
+** meaning 1 digit of 0.
+*/
+
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_count_digits(int n)
 {
-	size_t	i;
-	int		j;
-	size_t	k;
+	int	i;
 
-	i = 0;
-	if (!little[i])
-		return ((char*)big);
-	while (big[i] && i < len)
+	if (n == -2147483648)
+		i = 0;
+	else if (n == 0)
+		i = 1;
+	else
+		i = 0;
+	while (n != 0)
 	{
-		j = 0;
-		if (big[i] == little[j])
-		{
-			k = i;
-			while (big[k] == little[j] && big[k] && little[j] && k < len)
-			{
-				k++;
-				j++;
-			}
-			if (!little[j])
-				return ((char*)&big[i]);
-		}
+		n /= 10;
 		i++;
 	}
-	return (0);
+	return (i);
 }

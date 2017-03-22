@@ -10,6 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Declare newlink of type t_list which is a struct of members *content,
+** content_size, and next.
+**
+** Allocate memmory for newlink of type and size t_list.
+**
+** If content is NULL initialize content to 0 and size to 0.
+**
+** If content exists allocate memmory of size (content_size).
+**
+** Pointing to content use ft_memcpy to copy content into newlink.content.
+** Create a copy of the content_size to newlink.content_size.
+**
+** Set next to point to NULL.
+**
+** Return the newlink.
+*/
+
 #include "libft.h"
 
 t_list	*ft_lstnew(void const *content, size_t content_size)

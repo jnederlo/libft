@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 15:52:40 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/06 16:32:45 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/19 15:20:20 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/19 15:20:23 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	size_t	i;
-	int		j;
-	size_t	k;
+	t_list	*next_node;
 
-	i = 0;
-	if (!little[i])
-		return ((char*)big);
-	while (big[i] && i < len)
+	if (!lst || !f)
+		return ;
+	while (lst && f)
 	{
-		j = 0;
-		if (big[i] == little[j])
-		{
-			k = i;
-			while (big[k] == little[j] && big[k] && little[j] && k < len)
-			{
-				k++;
-				j++;
-			}
-			if (!little[j])
-				return ((char*)&big[i]);
-		}
-		i++;
+		next_node = lst->next;
+		f(lst);
+		lst = next_node;
 	}
-	return (0);
 }

@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 15:52:40 by jnederlo          #+#    #+#             */
-/*   Updated: 2017/03/06 16:32:45 by jnederlo         ###   ########.fr       */
+/*   Created: 2017/03/18 20:01:39 by jnederlo          #+#    #+#             */
+/*   Updated: 2017/03/18 20:01:42 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Counts the number of words in a string.
+** Words are seperated by a delimiter 'c'.
+*/
+
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_count_words(const char *s, char c)
 {
-	size_t	i;
-	int		j;
-	size_t	k;
+	int	j;
 
-	i = 0;
-	if (!little[i])
-		return ((char*)big);
-	while (big[i] && i < len)
+	j = 0;
+	while (*s)
 	{
-		j = 0;
-		if (big[i] == little[j])
-		{
-			k = i;
-			while (big[k] == little[j] && big[k] && little[j] && k < len)
-			{
-				k++;
-				j++;
-			}
-			if (!little[j])
-				return ((char*)&big[i]);
-		}
-		i++;
+		while (*s == c)
+			s++;
+		if (*s != c && *s)
+			j++;
+		while (*s != c && *s)
+			s++;
 	}
-	return (0);
+	return (j);
 }
