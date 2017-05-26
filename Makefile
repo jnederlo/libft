@@ -27,7 +27,7 @@ FILES		=	ft_atoi.c ft_strcat.c ft_strncat.c ft_strcmp.c ft_strncmp.c \
 				ft_itoa.c ft_strsplit.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 				ft_strlcat.c ft_word_copy.c ft_count_words.c ft_next_word.c \
 				ft_is_whitespace.c ft_count_digits.c ft_lstadd.c ft_lstiter.c \
-				ft_lstmap.c ft_linetrim.c ft_linestrip.c \
+				ft_lstmap.c ft_linetrim.c ft_linestrip.c get_next_line.c \
 
 SOURCES		=	$(addprefix srcs/, $(FILES))
 OBJECTS		=	$(addprefix build/, $(FILES:.c=.o))
